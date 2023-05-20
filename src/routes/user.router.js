@@ -1,7 +1,7 @@
-const { signUp } = require('../controller/registration.controller')
-const userRouter = require('express').Router()
+const { signIn } = require('../controller/signin.controller');
+const userRouter = require('express').Router();
 
-userRouter.post('/signup', signUp)
+// userRouter.post('/signup', signUp); Ganti controller
+userRouter.post('/signin', signIn);
 
-
-module.exports = userRouter
+module.exports = userRouter;
