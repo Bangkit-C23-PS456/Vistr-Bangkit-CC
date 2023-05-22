@@ -14,4 +14,4 @@ const credentials = {
 const app = initializeApp(credentials);
 const auth = getAuth(app);
 
-module.exports = auth;
+module.exports = { auth };
