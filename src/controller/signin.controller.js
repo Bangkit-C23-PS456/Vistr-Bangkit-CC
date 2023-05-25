@@ -1,5 +1,5 @@
 const { signInWithEmailAndPassword } = require('firebase/auth');
-const auth = require('../utils/firebaseAuth.util');
+const {auth} = require('../utils/firebaseAuth.util');
 
 const signIn = async (req, res) => {
   const { email, password } = req.body;
@@ -22,7 +22,6 @@ const signIn = async (req, res) => {
         .status(401)
         .json({ status: 'fail', message: 'Email or password wrong' });
     }
-
     res.status(500).json({ status: 'fail', message: error });
   }
 };
