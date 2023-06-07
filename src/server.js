@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const path = require('path');
 const rfs = require('rotating-file-stream');
 const placeRouter = require('./routes/place.router');
+const cityRouter = require('./routes/city.router');
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+app.use('/city',cityRouter)
 app.use('/user', userRouter);
 app.use('/place', placeRouter)
 
