@@ -1,18 +1,15 @@
 const { signInWithEmailAndPassword } = require('firebase/auth');
-const auth = require('../utils/firebaseAuth.util');
+const { auth } = require('../utils/firebaseAuth.util');
 
 const signIn = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const signInresponse = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    const response = await signInWithEmailAndPassword(auth, email, password);
     res.status(200).json({
       status: 'success',
-      data: signInresponse.user.accessToken,
+      token: response.user.accessToken,
     });
+    
   } catch (error) {
     if (
       error.code === 'auth/user-not-found' ||

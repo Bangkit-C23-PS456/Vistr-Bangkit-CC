@@ -6,6 +6,7 @@ const fs = require('fs');
 const morgan = require('morgan');
 const path = require('path');
 const rfs = require('rotating-file-stream');
+const placeRouter = require('./routes/place.router');
 
 const app = express();
 
@@ -36,6 +37,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/user', userRouter);
+app.use('/place', placeRouter)
 
 const port = process.env.PORT;
 
