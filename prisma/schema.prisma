@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              Int              @id @default(autoincrement())
+  firebaseId      String
+  name            String
+  email           String           @unique
+  created_at      DateTime         @default(now())
+  user_preference UserPreference[]
+}
+
+model UserPreference {
+  id             Int      @id @default(autoincrement())
+  user_id        Int
+  user           User     @relation(fields: [user_id], references: [id])
+  place_activity String
+  place_category String
+  city           String
+  latitude       Int
+  longitude      Int
+  createdAt      DateTime @default(now())
+}
+
+model Place {
+  id            Int             @id @default(autoincrement())
+  place_name    String
+  description   String
+  activity      String
+  min_price     Int
+  max_price     Int
+  rating        Int
+  latitude      Int
+  longitude     Int
+  categories    PlaceCategory[]      
+  city          City?           @relation(fields: [cityId], references: [id])
+  cityId        Int?
+}
+
+model Category {
+  id            Int             @id @default(autoincrement())
+  name          String          @unique
+  places        PlaceCategory[]         
+}
+
+model PlaceCategory {
+  place      Place    @relation(fields: [placeId], references: [id])
+  placeId    Int
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+
+  @@id([placeId, categoryId])
+}
+
+model City {
+  id     Int     @id @default(autoincrement())
+  name   String
+  places Place[]
+}

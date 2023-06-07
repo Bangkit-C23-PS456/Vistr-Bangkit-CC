@@ -1,15 +1,26 @@
 const { createUserWithEmailAndPassword } = require('firebase/auth');
 const { auth } = require('../utils/firebaseAuth.util');
+const prisma = require('../database/prisma.database')
+
 
 const signUp = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, name } = req.body;
   try {
     const response = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
-    res.status(200).json({ status: 'success', data: response });
+
+    await prisma.user.create({
+      data: {
+        firebaseId: response.user.uid,
+        name,
+        email,
+      },
+    });
+
+    res.status(200).json({ status: 'success', token: response.user.accessToken });
   } catch (error) {
     if (error.code === 'auth/email-already-in-use') {
       return res
