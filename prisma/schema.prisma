@@ -41,9 +41,29 @@ model Place {
   rating        Int
   latitude      Int
   longitude     Int
-  categories    PlaceCategory[]      
+  openingHours OpeningHours[]
+  categories    PlaceCategory[]
+  photos Photo[]      
   city          City?           @relation(fields: [cityId], references: [id])
   cityId        Int?
+}
+
+model Photo {
+  id Int @id @default(autoincrement())
+  placeId Int
+  widht String
+  height String
+  url String
+  place Place @relation(fields: [placeId], references: [id])
+}
+
+model OpeningHours {
+  id Int @id @default(autoincrement())
+  placeId Int
+  day String
+  openTime Int
+  colseTime Int
+  place Place @relation(fields: [placeId],references: [id])
 }
 
 model Category {
