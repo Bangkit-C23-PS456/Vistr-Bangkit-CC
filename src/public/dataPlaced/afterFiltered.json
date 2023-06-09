@@ -1,0 +1,273 @@
+[
+    {
+        "place_name": "Manggar Segarasari Beach",
+        "city": "Balikpapan",
+        "rating": "3.5",
+        "latitude": "-1.212555",
+        "longitude": "116.98106",
+        "opening_hours": {
+            "week_ranges": [
+                [
+                    {
+                        "open_time": 800,
+                        "close_time": 1600
+                    }
+                ],
+                [
+                    {
+                        "open_time": 800,
+                        "close_time": 1600
+                    }
+                ],
+                [
+                    {
+                        "open_time": 800,
+                        "close_time": 1600
+                    }
+                ],
+                [
+                    {
+                        "open_time": 800,
+                        "close_time": 1600
+                    }
+                ],
+                [
+                    {
+                        "open_time": 800,
+                        "close_time": 1600
+                    }
+                ],
+                [
+                    {
+                        "open_time": 800,
+                        "close_time": 1600
+                    }
+                ],
+                [
+                    {
+                        "open_time": 800,
+                        "close_time": 1600
+                    }
+                ]
+            ],
+            "timezone": "Asia/Makassar"
+        },
+        "contact_number": null,
+        "address": "Kelurahan Manggar, Balikpapan Timur, Balikpapan, Kalimantan Timur, Indonesia, 76116",
+        "min_price": 5000,
+        "max_price": 30000,
+        "activity": "Outdoor",
+        "category": "Beach",
+        "description": "Pantai Manggar Segarasari atau biasa disebut dengan Pantai Manggar merupakan salah satu tujuan wisata favorit bagi masyarakat kota Balikpapan. Pantai ini terletak di Kelurahan Manggar dan Teritip, Balikpapan, Kalimantan Timur. Luas wilayahnya kurang lebih sekitar 13.000 meter persegi. Pantai ini mempunyai air laut yang biru dan hamparan pasir pantai berwarna putih. Ombaknya pun tidak terlalu besar, hanya riak gelombang kecil yang cocok untuk berenang. Di sekitar pantai juga banyak dijumpai tempat penyewaan pelampung dengan aneka bentuk dan warna. Pohon-pohon yang ada di sekitar pantai pun turut memberikan kesan teduh dan sejuk. Menariknya fasilitas di pantai ini bisa dibilang lebih komplit dibanding pantai-pantai lain yang ada di Balikpapan.",
+        "photo": {
+            "images": {
+                "small": {
+                    "width": "150",
+                    "url": "https://media-cdn.tripadvisor.com/media/photo-l/09/93/04/4c/img-20151119-152608-largejpg.jpg",
+                    "height": "150"
+                },
+                "thumbnail": {
+                    "width": "50",
+                    "url": "https://media-cdn.tripadvisor.com/media/photo-t/09/93/04/4c/img-20151119-152608-largejpg.jpg",
+                    "height": "50"
+                },
+                "original": {
+                    "width": "1200",
+                    "url": "https://media-cdn.tripadvisor.com/media/photo-o/09/93/04/4c/img-20151119-152608-largejpg.jpg",
+                    "height": "1600"
+                },
+                "large": {
+                    "width": "550",
+                    "url": "https://media-cdn.tripadvisor.com/media/photo-p/09/93/04/4c/img-20151119-152608-largejpg.jpg",
+                    "height": "733"
+                },
+                "medium": {
+                    "width": "338",
+                    "url": "https://media-cdn.tripadvisor.com/media/photo-s/09/93/04/4c/img-20151119-152608-largejpg.jpg",
+                    "height": "450"
+                }
+            }
+        }
+    },
+    {
+        "place_name": "Transmart Carrefour",
+        "city": "Balikpapan",
+        "rating": "4.0",
+        "latitude": "-1.25746",
+        "longitude": "116.86833",
+        "opening_hours": {
+            "week_ranges": [
+                [
+                    {
+                        "open_time": 1000,
+                        "close_time": 2000
+                    }
+                ],
+                [
+                    {
+                        "open_time": 1000,
+                        "close_time": 2000
+                    }
+                ],
+                [
+                    {
+                        "open_time": 1000,
+                        "close_time": 2000
+                    }
+                ],
+                [
+                    {
+                        "open_time": 1000,
+                        "close_time": 2000
+                    }
+                ],
+                [
+                    {
+                        "open_time": 1000,
+                        "close_time": 2000
+                    }
+                ],
+                [
+                    {
+                        "open_time": 1000,
+                        "close_time": 2000
+                    }
+                ],
+                [
+                    {
+                        "open_time": 1000,
+                        "close_time": 2000
+                    }
+                ]
+            ],
+            "timezone": "Asia/Makassar"
+        },
+        "contact_number": null,
+        "address": "Jl. MT. Haryono, Balikpapan 76126 Indonesia",
+        "min_price": 0,
+        "max_price": 10000000,
+        "activity": "Indoor",
+        "category": "Shopping Center",
+        "description": "Salah satu pusat perbelanjaan terbaik di Kota Balikpapan, banyak promo, dan terdapat beberapa pilihan food court. Untuk parkir gratis namun ada syarat minimum belanja. Selain itu tak lupa, disini terdapat wahana Trans Studio Mini pertama di Kalimantan.",
+        "photo": {
+            "images": {
+                "small": {
+                    "width": "150",
+                    "url": "https://media-cdn.tripadvisor.com/media/photo-l/0a/ef/31/9a/various-joy-rides-and.jpg",
+                    "height": "150"
+                },
+                "thumbnail": {
+                    "width": "50",
+                    "url": "https://media-cdn.tripadvisor.com/media/photo-t/0a/ef/31/9a/various-joy-rides-and.jpg",
+                    "height": "50"
+                },
+                "original": {
+                    "width": "2048",
+                    "url": "https://media-cdn.tripadvisor.com/media/photo-o/0a/ef/31/9a/various-joy-rides-and.jpg",
+                    "height": "1536"
+                },
+                "large": {
+                    "width": "550",
+                    "url": "https://media-cdn.tripadvisor.com/media/photo-s/0a/ef/31/9a/various-joy-rides-and.jpg",
+                    "height": "413"
+                },
+                "medium": {
+                    "width": "250",
+                    "url": "https://media-cdn.tripadvisor.com/media/photo-f/0a/ef/31/9a/various-joy-rides-and.jpg",
+                    "height": "188"
+                }
+            }
+        }
+    },
+    {
+        "place_name": "Bangkirai Hill Nature Tourism",
+        "city": "Balikpapan",
+        "rating": "4.0",
+        "latitude": "-1.02911",
+        "longitude": "116.86728",
+        "opening_hours": {
+            "week_ranges": [
+                [
+                    {
+                        "open_time": 800,
+                        "close_time": 1600
+                    }
+                ],
+                [
+                    {
+                        "open_time": 800,
+                        "close_time": 1600
+                    }
+                ],
+                [
+                    {
+                        "open_time": 800,
+                        "close_time": 1600
+                    }
+                ],
+                [
+                    {
+                        "open_time": 800,
+                        "close_time": 1600
+                    }
+                ],
+                [
+                    {
+                        "open_time": 800,
+                        "close_time": 1600
+                    }
+                ],
+                [
+                    {
+                        "open_time": 800,
+                        "close_time": 1600
+                    }
+                ],
+                [
+                    {
+                        "open_time": 800,
+                        "close_time": 1600
+                    }
+                ]
+            ],
+            "timezone": "Asia/Makassar"
+        },
+        "contact_number": "+62 813-5499-9386",
+        "address": "Bukit Bangkirai, Balikpapan 75271 Indonesia",
+        "min_price": 10000,
+        "max_price": 15000,
+        "activity": "Outdoor",
+        "category": "Hill",
+        "description": "Kawasan wisata ini terletak di Kecamatan Samboja, Kabupaten Kutai Kartanegara, Kalimantan Timur. Bukit Bangkirai dapat ditempuh melalui perjalanan darat selama 1,5 jam dari Kota Balikpapan.",
+        "photo": {
+            "images": {
+                "small": {
+                    "width": "150",
+                    "url": "https://media-cdn.tripadvisor.com/media/photo-l/06/47/6d/77/bangkirai-hill-nature.jpg",
+                    "height": "150"
+                },
+                "thumbnail": {
+                    "width": "50",
+                    "url": "https://media-cdn.tripadvisor.com/media/photo-t/06/47/6d/77/bangkirai-hill-nature.jpg",
+                    "height": "50"
+                },
+                "original": {
+                    "width": "700",
+                    "url": "https://media-cdn.tripadvisor.com/media/photo-o/06/47/6d/77/bangkirai-hill-nature.jpg",
+                    "height": "467"
+                },
+                "large": {
+                    "width": "700",
+                    "url": "https://media-cdn.tripadvisor.com/media/photo-o/06/47/6d/77/bangkirai-hill-nature.jpg",
+                    "height": "467"
+                },
+                "medium": {
+                    "width": "550",
+                    "url": "https://media-cdn.tripadvisor.com/media/photo-s/06/47/6d/77/bangkirai-hill-nature.jpg",
+                    "height": "366"
+                }
+            }
+        }
+    }
+    
+]
