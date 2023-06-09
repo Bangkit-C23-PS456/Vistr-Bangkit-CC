@@ -29,7 +29,7 @@ const getByMultipleCategories = async (req,res) => {
             },
         })
         if(data.length === 0) {
-            return res.status(404).json({status : 'fail', message : 'Tidak menemukan tempat sesuai kategori'})
+            return res.status(400).json({status : 'fail', message : 'Tidak menemukan tempat sesuai kategori'})
         }
         return res.status(200).json({status : 'success', data : data})
     } catch (error) {
