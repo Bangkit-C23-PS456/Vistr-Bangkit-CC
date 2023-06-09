@@ -95,8 +95,6 @@ const inputDataJson = async(req,res) => {
                   closeTime: time.close_time,
                 }));
               });
-              
-              console.log(parseFloat(place.latitude))
               return prisma.place.create({
                 data: {
                   place_name: place.place_name,
