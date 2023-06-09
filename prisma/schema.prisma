@@ -54,7 +54,7 @@ model Photo {
   width   String
   height  String
   url     String
-  place   Place  @relation(fields: [placeId], references: [id])
+  place   Place  @relation(fields: [placeId], references: [id],onDelete: Cascade)
 }
 
 model OpeningHours {
@@ -62,7 +62,7 @@ model OpeningHours {
   day       String
   openTime  Int
   closeTime Int
-  place     Place  @relation(fields: [placeId], references: [id])
+  place     Place  @relation(fields: [placeId], references: [id], onDelete: Cascade)
   placeId   Int
 }
 
@@ -73,7 +73,7 @@ model Category {
 }
 
 model PlaceCategory {
-  place      Place    @relation(fields: [placeId], references: [id])
+  place      Place    @relation(fields: [placeId], references: [id],onDelete: Cascade)
   placeId    Int
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId Int
