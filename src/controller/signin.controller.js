@@ -19,7 +19,6 @@ const signIn = async (req, res) => {
         .status(401)
         .json({ status: 'fail', message: 'Email or password wrong' });
     }
-
     res.status(500).json({ status: 'fail', message: error });
   }
 };
