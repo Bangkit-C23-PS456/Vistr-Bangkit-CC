@@ -32,44 +32,44 @@ model UserPreference {
 }
 
 model Place {
-  id            Int             @id @default(autoincrement())
-  place_name    String
-  description   String
-  activity      String
-  min_price     Int
-  max_price     Int
-  rating        Int
-  latitude      Int
-  longitude     Int
+  id           Int             @id @default(autoincrement())
+  place_name   String
+  description  String          @db.Text
+  activity     String
+  min_price    Int
+  max_price    Int
+  rating       Int
+  latitude     Float
+  longitude    Float
   openingHours OpeningHours[]
-  categories    PlaceCategory[]
-  photos Photo[]      
-  city          City?           @relation(fields: [cityId], references: [id])
-  cityId        Int?
+  categories   PlaceCategory[]
+  photos       Photo[]
+  city         City?           @relation(fields: [cityId], references: [id])
+  cityId       Int?
 }
 
 model Photo {
-  id Int @id @default(autoincrement())
+  id      Int    @id @default(autoincrement())
   placeId Int
-  widht String
-  height String
-  url String
-  place Place @relation(fields: [placeId], references: [id])
+  width   String
+  height  String
+  url     String
+  place   Place  @relation(fields: [placeId], references: [id])
 }
 
 model OpeningHours {
-  id Int @id @default(autoincrement())
-  placeId Int
-  day String
-  openTime Int
-  colseTime Int
-  place Place @relation(fields: [placeId],references: [id])
+  id        Int    @id @default(autoincrement())
+  day       String
+  openTime  Int
+  closeTime Int
+  place     Place  @relation(fields: [placeId], references: [id])
+  placeId   Int
 }
 
 model Category {
-  id            Int             @id @default(autoincrement())
-  name          String          @unique
-  places        PlaceCategory[]         
+  id     Int             @id @default(autoincrement())
+  name   String          @unique
+  places PlaceCategory[]
 }
 
 model PlaceCategory {
@@ -83,6 +83,6 @@ model PlaceCategory {
 
 model City {
   id     Int     @id @default(autoincrement())
-  name   String
+  name   String @unique
   places Place[]
 }
