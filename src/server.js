@@ -32,7 +32,6 @@ if (process.env.APP_ENV === 'DEVELOPMENT') {
   app.use(morgan('combined', { stream: accessLogStream }));
 }
 
-
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
