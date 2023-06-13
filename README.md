@@ -251,3 +251,100 @@ Retrieves a paginated list of places based on the specified search criteria.
   - `categories` (array): An array of category names associated with the place.
 - `totalPages` (number): The total number of pages available.
 - `currentPage` (number): The current page number.
+
+## GET /user/prefrence
+
+Retrieves user preferences based on activity, category, latitude, and longitude.
+
+**Parameters:**
+
+- `activity` (string, required): The activity type for preferred places.
+- `category` (string, required): The category of preferred places.
+- `latitude` (number, required): The latitude coordinate of the user's location.
+- `longitude` (number, required): The longitude coordinate of the user's location.
+
+**Response:**
+
+The response will contain the following fields:
+
+- `status` (string): The status of the response ("success" or "fail").
+- `data` (array): An array of preferred places containing the following information:
+  - `place_name` (string): The name of the place.
+  - `city` (string): The city where the place is located.
+  - `rating` (number): The rating of the place.
+  - `latitude` (number): The latitude coordinate of the place.
+  - `longitude` (number): The longitude coordinate of the place.
+  - `opening_hours` (object): The opening hours of the place (null if not available).
+  - `contact_number` (string): The contact number of the place.
+  - `address` (string): The address of the place.
+  - `min_price` (number): The minimum price at the place.
+  - `max_price` (number): The maximum price at the place.
+  - `activity` (string): The activity type at the place.
+  - `category` (string): The category of the place.
+  - `description` (string): The description of the place.
+  - `photo` (object): The photo URLs of the place in different sizes.
+  - `distance` (number): The distance from the user's location to the place.
+
+**Example Request:**
+
+```
+GET /user/prefrence?category=Beach&latitude=-1.212555&longitude=116.98106&activity=Outdoor
+```
+
+**Example Response:**
+
+```json
+{
+  "status": "success",
+  "data": [
+    {
+      "place_name": "Sarrie Day Spa",
+      "city": "Balikpapan",
+      "rating": 5,
+      "latitude": -1.2635,
+      "longitude": 116.85812,
+      "opening_hours": null,
+      "contact_number": "+62 813-5182-8158",
+      "address": "Jln. MT. Haryono no. 6 Ruko Bukit Damai Indah, Balikpapan 76126 Indonesia",
+      "min_price": 50000,
+      "max_price": 300000,
+      "activity": "Indoor",
+      "category": "Spa",
+      "description": "Tradisional Spa",
+      "photo": {
+        "images": {
+          "small": {
+            "width": "550",
+            "url": "",
+            "height": "550"
+          },
+          "thumbnail": {
+            "width": "550",
+            "url": "",
+            "height": "550"
+          },
+          "original": {
+            "width": "550",
+            "url": "",
+            "height": "550"
+          },
+          "large": {
+            "width": "550",
+            "url": "",
+            "height": "550"
+          },
+          "medium": {
+            "width": "550",
+            "url": "",
+            "height": "550"
+          }
+
+
+        }
+      },
+      "distance": 4.5
+    },
+    // ... more preferred places
+  ]
+}
+```
