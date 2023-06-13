@@ -1,7 +1,14 @@
 const prisma = require('../database/prisma.database')
 const filterData = require('../helper/filteredPlaces')
-const places = require('../../src/public/dataPlaced/afterFiltered.json')
+const places = require('../../src/public/dataPlaced/afterFiltered.json');
+const sortFieldType = require('../helper/sortFieldType');
+
 const getAllPlaces = async (req, res) => {
+  const { page = 1, limit = 10 } = req.query;
+  const totalCount = await prisma.place.count();
+  const totalPages = Math.ceil(totalCount / limit);
+  const offset = (page - 1) * limit;
+
     try {
         const places = await prisma.place.findMany({
             include: {
@@ -11,7 +18,9 @@ const getAllPlaces = async (req, res) => {
                         category: true
                     }
                 },
-            }
+            },
+            skip: parseInt(offset),
+            take: parseInt(limit),
         })
 
         if (places.length === 0) return res.status(404).json({
@@ -30,10 +39,13 @@ const getAllPlaces = async (req, res) => {
 
         res.status(200).json({
             status: 'success',
-            places: processedPlaces
+            places: processedPlaces,
+            totalPages: totalPages,
+            currentPage: page,
         });
 
     } catch (error) {
+      console.log(error)
         res.status(500).json({ status: 'fail', message: error });
     }
 }
@@ -56,7 +68,7 @@ const getPlaceById = async (req, res) => {
         });
 
         if (!place) {
-            return res.status(404).json({
+            return res.status(204).json({
                 status: 'fail',
                 message: 'Place not found',
             });
@@ -73,6 +85,59 @@ const getPlaceById = async (req, res) => {
         });
     }
 };
+
+const searchByField = async (req,res) => {
+  const {search,sortField,rating,page = 1, limit = 10,city} = req.query
+  const data = await sortFieldType(sortField,search,rating,city)
+  const totalCount = await prisma.place.count({
+    where: data.countData
+  });
+
+  const totalPages = Math.ceil(totalCount / limit);
+  const offset = (page - 1) * limit;
+
+  try {
+    const places = await prisma.place.findMany({
+      where: data.data,
+      include: {
+        city: true,
+        categories: {
+          include: {
+            category: true
+          }
+        }
+      },
+      skip: parseInt(offset),
+      take: parseInt(limit),
+    })
+    const processedPlaces = places.map(place => {
+      const categories = place.categories.map(category => category.category.name);
+      return {
+        ...place,
+        categories: categories
+      };
+    });
+
+    console.log(processedPlaces.length === 0)
+    if(processedPlaces.length === 0 ) {
+      return res.status(400).json({status: "fail", message : "Data tidak ada"})
+    } else {
+      return res.status(200).json({
+        status: 'success',
+        places: processedPlaces,
+        totalPages: totalPages,
+        currentPage: page,
+      });
+    }
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      status: 'fail',
+      message: error,
+    });
+  }
+}
 
 const inputDataJson = async(req,res) => {
     try {
@@ -155,4 +220,4 @@ const prepData = async(req,res) => {
 }
 
 
-module.exports = { getAllPlaces, getPlaceById,inputDataJson,prepData }
+module.exports = { getAllPlaces, getPlaceById,inputDataJson,prepData,searchByField }
