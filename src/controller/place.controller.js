@@ -60,7 +60,7 @@ const getAllPlaces = async (req, res) => {
     }
 };
 
-const getPlaceById = async (req, res) => {
+const  getPlaceById = async (req, res) => {
     const { id } = req.params;
     try {
         const place = await prisma.place.findUnique({
