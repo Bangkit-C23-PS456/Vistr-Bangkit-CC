@@ -8,10 +8,11 @@ const getAllPlaces = async (req, res) => {
     const totalCount = await prisma.place.count();
     const totalPages = Math.ceil(totalCount / limit);
     const offset = (page - 1) * limit;
-
     try {
         const places = await prisma.place.findMany({
             include: {
+                photos : true,
+                openingHours: true,
                 city: true,
                 categories: {
                     include: {
@@ -22,7 +23,6 @@ const getAllPlaces = async (req, res) => {
             skip: parseInt(offset),
             take: parseInt(limit),
         });
-
         if (places.length === 0)
             return res.status(404).json({
                 status: "fail",
@@ -68,6 +68,8 @@ const getPlaceById = async (req, res) => {
                 id: parseInt(id),
             },
             include: {
+                photos: true,
+                openingHours: true,
                 categories: {
                     include: {
                         category: true,
@@ -110,6 +112,8 @@ const searchByField = async (req, res) => {
         const places = await prisma.place.findMany({
             where: data.data,
             include: {
+                photos: true,
+                openingHours: true,
                 city: true,
                 categories: {
                     include: {
@@ -245,6 +249,8 @@ const getPopularPlaces = async (req, res) => {
                 },
             },
             include: {
+                photos: true,
+                openingHours:true,
                 city: true,
                 categories: {
                     include: {
