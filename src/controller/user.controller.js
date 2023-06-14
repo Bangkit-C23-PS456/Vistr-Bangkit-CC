@@ -22,39 +22,48 @@ const getAllUser = async(req,res) => {
         
     }
 }
-
+//TODO AUTH firebaseId from after decode TOKEN
 const userPrefInput = async(req,res) => {
-    const {latitude,longitude,userId,city,place_activity,place_category} = req.body
-    if (!latitude || !longitude || !userId || !city || !place_activity  || !place_category) {
+    const {latitude,longitude,firebaseId,city,place_activity,place_category} = req.body
+    if (!latitude || !longitude || !firebaseId || !city || !place_activity  || !place_category) {
         return res.status(422).json({status : 'fail', message : "Data yang diminta tidak sesuai"})
     }
     else {
-        try {
-            const prefUser = await prisma.UserPreference.create({
-                data : {
-                    user_id : parseInt(userId),
-                    place_activity : place_activity.toUpperCase(),
-                    city : city,
-                    latitude: parseFloat(latitude),
-                    longitude : parseFloat(longitude),
-                    place_category : {
-                        connectOrCreate : {
-                            where : {name : place_category},
-                            create: {name : place_category}
-                        }
-                    }
-                },
-                include : {
-                    place_category: true
-                }
-            })
-            return res.status(200).json({status : 'success', data : prefUser})
-        } catch (error) {
-            if(error.code === "P2002"){
-                return res.status(500) .json({status: 'fail',message : "Gagal Untuk Membuat User Pref"})   
+        const user = await prisma.user.findFirst({
+            where : {
+                firebaseId : firebaseId
             }
-            console.log(error)
-            return res.status(500) .json({status: 'fail',message : error})   
+        })
+        if(!user) {
+            return res.status(404).json({status:'fail', message : 'user tidak ada'})
+        }else{
+            try {
+                const prefUser = await prisma.UserPreference.create({
+                    data : {
+                        user_id : user.id,
+                        place_activity : place_activity.toUpperCase(),
+                        city : city,
+                        latitude: parseFloat(latitude),
+                        longitude : parseFloat(longitude),
+                        place_category : {
+                            connectOrCreate : {
+                                where : {name : place_category},
+                                create: {name : place_category}
+                            }
+                        }
+                    },
+                    include : {
+                        place_category: true
+                    }
+                })
+                return res.status(200).json({status : 'success', data : prefUser})
+            } catch (error) {
+                if(error.code === "P2002"){
+                    return res.status(500) .json({status: 'fail',message : "Gagal Untuk Membuat User Pref"})   
+                }
+                console.log(error)
+                return res.status(500) .json({status: 'fail',message : error})   
+            }
         }
     }
 }
