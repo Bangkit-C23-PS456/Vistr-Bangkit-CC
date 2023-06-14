@@ -231,11 +231,10 @@ const inputDataJson = async (req, res) => {
     }
 };
 
-const prepData = async (req, res) => {
-    const data = await filterData();
-
-    res.status(200).send(data);
-};
+const prepData = async(req,res) => {
+    const data = await filterData()
+    res.status(200).send(data)
+}
 
 const getPopularPlaces = async (req, res) => {
     try {
