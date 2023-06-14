@@ -9,6 +9,7 @@ const {
     prepData,
     getPopularPlaces,
     getByActivity,
+    searchByField,
 } = require("../controller/place.controller");
 const placeRouter = require("express").Router();
 
@@ -20,5 +21,6 @@ placeRouter.get("/input-data", inputDataJson);
 placeRouter.get("/prep-data", prepData);
 placeRouter.get("/get-popular-place", getPopularPlaces);
 placeRouter.get("/get-by-activity", getByActivity);
+placeRouter.get("/search-by-name", searchByField);
 
 module.exports = placeRouter;
