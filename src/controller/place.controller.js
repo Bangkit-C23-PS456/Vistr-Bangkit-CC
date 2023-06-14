@@ -1,9 +1,6 @@
 const prisma = require("../database/prisma.database");
 const filterData = require("../helper/filteredPlaces");
 const places = require("../../src/public/dataPlaced/afterFiltered.json");
-const prisma = require("../database/prisma.database");
-const filterData = require("../helper/filteredPlaces");
-const places = require("../../src/public/dataPlaced/afterFiltered.json");
 const sortFieldType = require("../helper/sortFieldType");
 
 const getAllPlaces = async (req, res) => {
