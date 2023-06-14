@@ -21,13 +21,13 @@ model User {
 
 model UserPreference {
   id             Int      @id @default(autoincrement())
-  user_id        Int
+  user_id        Int @unique
   user           User     @relation(fields: [user_id], references: [id],onDelete:Cascade )
   place_activity Place_Activity
   place_category UserPlaceCategory[]
   city           String
-  latitude       Int
-  longitude      Int
+  latitude       Float
+  longitude      Float
   createdAt      DateTime @default(now())
 }
 
@@ -38,7 +38,7 @@ enum Place_Activity {
 
 model UserPlaceCategory {
   id             Int      @id @default(autoincrement())
-  name String
+  name String @unique
   user_pref UserPreference @relation(fields: [user_prefId],references: [id],onDelete: Cascade)
   user_prefId Int
 }
