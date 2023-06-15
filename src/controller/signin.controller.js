@@ -9,7 +9,7 @@ const signIn = async (req, res) => {
       status: 'success',
       token: response.user.accessToken,
     });
-    
+
   } catch (error) {
     if (
       error.code === 'auth/user-not-found' ||
