@@ -1,5 +1,4 @@
 const axios = require('axios')
-const { auth } = require('../utils/firebaseAuth.util')
 const { admin } = require('../middleware/verifyToken')
 
 const userPreference = async (req, res) => {
@@ -28,7 +27,6 @@ const getAllUser = async (req, res) => {
 const userPrefInput = async (req, res) => {
     const { latitude, longitude, city, place_activity, place_category } = req.body
     const firebaseId = req.decodedToken
-    console.log(firebaseId)
     if (!latitude || !longitude || !firebaseId || !city || !place_activity || !place_category) {
         return res.status(422).json({ status: 'fail', message: "Data yang diminta tidak sesuai" })
     }
@@ -65,7 +63,6 @@ const userPrefInput = async (req, res) => {
                 if (error.code === "P2002") {
                     return res.status(500).json({ status: 'fail', message: "Gagal Untuk Membuat User Pref" })
                 }
-                console.log(error)
                 return res.status(500).json({ status: 'fail', message: error })
             }
         }
@@ -170,5 +167,28 @@ const editUserPreference = async (req, res) => {
     }
 };
 
+const getUserProfile = async (req, res) => {
+    const firebaseId = req.decodedToken;
+    if (!firebaseId) {
+        return res.status(422).json({ status: 'fail', message: "Data yang diminta tidak sesuai" });
+    }
 
-module.exports = { userPreference, userIternary, getAllUser, userPrefInput, editUserProfile, editUserPreference }
+    try {
+        const user = await prisma.user.findFirst({
+            where: {
+                firebaseId: firebaseId,
+            },
+        });
+
+        if (!user) {
+            return res.status(404).json({ status: 'fail', message: 'user tidak ada' });
+        }
+
+        res.status(200).json({ status: 'success', data: user });
+    } catch (error) {
+        res.status(500).json({ status: 'fail', message: error });
+    }
+}
+
+
+module.exports = { userPreference, userIternary, getAllUser, userPrefInput, editUserProfile, editUserPreference, getUserProfile }

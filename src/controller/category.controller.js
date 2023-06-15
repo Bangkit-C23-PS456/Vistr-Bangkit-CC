@@ -19,7 +19,7 @@ const getAllCategories = async (req, res) => {
     }
 };
 
-const getCategoriesById = async (req, res) => {};
+const getCategoriesById = async (req, res) => { };
 
 const getByMultipleCategories = async (req, res) => {
     const { categories } = req.query;
@@ -40,6 +40,17 @@ const getByMultipleCategories = async (req, res) => {
                     },
                 },
             },
+            include: {
+                photos: true,
+                openingHours: true,
+                city: true,
+                categories: {
+                    include: {
+                        category: true,
+                    },
+                },
+            },
+
         });
         if (data.length === 0) {
             return res

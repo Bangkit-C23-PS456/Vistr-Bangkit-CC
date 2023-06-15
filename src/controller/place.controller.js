@@ -11,7 +11,7 @@ const getAllPlaces = async (req, res) => {
     try {
         const places = await prisma.place.findMany({
             include: {
-                photos : true,
+                photos: true,
                 openingHours: true,
                 city: true,
                 categories: {
@@ -60,7 +60,7 @@ const getAllPlaces = async (req, res) => {
     }
 };
 
-const  getPlaceById = async (req, res) => {
+const getPlaceById = async (req, res) => {
     const { id } = req.params;
     try {
         const place = await prisma.place.findUnique({
@@ -210,12 +210,12 @@ const inputDataJson = async (req, res) => {
                         photos: {
                             create: photo
                                 ? [
-                                      {
-                                          width: photo.images.small.width,
-                                          height: photo.images.small.height,
-                                          url: photo.images.small.url,
-                                      },
-                                  ]
+                                    {
+                                        width: photo.images.small.width,
+                                        height: photo.images.small.height,
+                                        url: photo.images.small.url,
+                                    },
+                                ]
                                 : [],
                         },
                         city: {
@@ -235,7 +235,7 @@ const inputDataJson = async (req, res) => {
     }
 };
 
-const prepData = async(req,res) => {
+const prepData = async (req, res) => {
     const data = await filterData()
     res.status(200).send(data)
 }
@@ -250,7 +250,7 @@ const getPopularPlaces = async (req, res) => {
             },
             include: {
                 photos: true,
-                openingHours:true,
+                openingHours: true,
                 city: true,
                 categories: {
                     include: {
@@ -297,6 +297,16 @@ const getByActivity = async (req, res) => {
         const data = await prisma.place.findMany({
             where: {
                 activity: activity,
+            },
+            include: {
+                photos: true,
+                openingHours: true,
+                city: true,
+                categories: {
+                    include: {
+                        category: true,
+                    },
+                },
             },
         });
 
