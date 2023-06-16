@@ -1,5 +1,6 @@
 # Vistr-Bangkit-CC
 
+# API's Documentation
 
 ## GET /get-all-place?page={number}&limit={number}
 
